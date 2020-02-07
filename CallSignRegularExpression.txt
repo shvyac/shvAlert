@@ -1,0 +1,170 @@
+﻿R0AA
+R9ZZ
+RA0AA
+RZ9ZZ
+UA0AA
+UI9ZZ
+RA0A
+RZ9Z
+UA0A
+UI9Z
+^[RU][A-Z]?[0-9][A-Z]{1,2}$ Russia Cat1
+
+R0AAA
+R9ZZZ
+RA0AAA
+RZ9ZZZ
+UA0AAA
+UA9ZZZ
+^(R|UA)[A-Z]?[0-9][A-Z]{3}$ Russia Cat2
+
+UB0AAA
+UD9ZZZ
+UF0AAA
+UG0ZZZ
+^[U][B-DF-G]?[0-9][A-Z]{3}$ Russia Cat3
+
+UE0AAA
+UE9ZZZ
+UH0AAA
+UI9ZZZ
+^[U][EH-I]?[0-9][A-Z]{3}$ Russia Cat4
+
+^[RU].*1A[A-Z]*$ 1A	Saint Petersburg /Northwest Russia
+^[RU].*1C[A-Z]*$ 1C	Leningrad /Northwest Russia
+^[RU].*1D[A-Z]*$ 1D	Saint Petersburg /Northwest Russia
+^[RU].*1N[A-Z]*$ 1N	Karelia /Northwest Russia
+^[RU].*1O[A-Z]*$ 1O	Arkhangelsk /Northwest Russia
+^[RU].*1P[A-Z]*$ 1P	Nenets /Northwest Russia
+^[RU].*1Q[A-Z]*$ 1Q	Vologda /Northwest Russia
+^[RU].*1T[A-Z]*$ 1T	Novgorod /Northwest Russia
+^[RU].*1W[A-Z]*$ 1W	Pskov /Northwest Russia
+^[RU].*1Y[A-Z]*$ 1Y	Murmansk /Northwest Russia
+^[RU].*2F[A-Z]*$ 2F	Kaliningrad /Northwest Russia
+
+^[RU].*3A[A-Z]*$ 3A	Moscow /Central Russia
+^[RU].*3D[A-Z]*$ 3D	Moskovskaya /Central Russia
+^[RU].*3E[A-Z]*$ 3E	Oryol /Central Russia
+^[RU].*3F[A-Z]*$ 3F	Moscow /Central Russia
+^[RU].*3G[A-Z]*$ 3G	Lipetsk /Central Russia
+^[RU].*3H[A-Z]*$ 3H	Moscow /Central Russia
+^[RU].*3I[A-Z]*$ 3I	Tver /Central Russia
+^[RU].*3L[A-Z]*$ 3L	Smolensk /Central Russia
+^[RU].*3M[A-Z]*$ 3M	Yaroslavl /Central Russia
+^[RU].*3N[A-Z]*$ 3N	Kostroma /Central Russia
+^[RU].*3P[A-Z]*$ 3P	Tula /Central Russia
+^[RU].*3Q[A-Z]*$ 3Q	Voronezh /Central Russia
+^[RU].*3R[A-Z]*$ 3R	Tambov /Central Russia
+^[RU].*3S[A-Z]*$ 3S	Ryazan /Central Russia
+^[RU].*3T[A-Z]*$ 3T	Nizhny Novgorod /Central Russia
+^[RU].*3U[A-Z]*$ 3U	Ivanovo /Central Russia
+^[RU].*3V[A-Z]*$ 3V	Vladimir /Central Russia
+^[RU].*3W[A-Z]*$ 3W	Kursk /Central Russia
+^[RU].*3X[A-Z]*$ 3X	Kaluga /Central Russia
+^[RU].*3Y[A-Z]*$ 3Y	Bryansk /Central Russia
+^[RU].*3Z[A-Z]*$ 3Z	Belgorod /Central Russia
+
+^[RU].*4A[A-Z]*$ 4A	Volgograd /Volga River
+^[RU].*4C[A-Z]*$ 4C	Saratov /Volga River
+^[RU].*4F[A-Z]*$ 4F	Penza /Volga River
+^[RU].*4H[A-Z]*$ 4H	Samara /Volga River
+^[RU].*4L[A-Z]*$ 4L	Ulyanovsk /Volga River
+^[RU].*4N[A-Z]*$ 4N	Kirov /Volga River
+^[RU].*4P[A-Z]*$ 4P	Tatarstan /Volga River
+^[RU].*4S[A-Z]*$ 4S	Mari El /Volga River
+^[RU].*4U[A-Z]*$ 4U	Mordovia /Volga River
+^[RU].*4W[A-Z]*$ 4W	Udmurtia /Volga River
+^[RU].*4Y[A-Z]*$ 4Y	Chuvashia /Volga River
+
+^[RU].*6A[A-Z]*$ 6A	Krasnodar /North Caucusus
+^[RU].*6E[A-Z]*$ 6E	Karachay–Cherkessia /North Caucusus
+^[RU].*6F[A-Z]*$ 6F	Stavropol /North Caucusus
+^[RU].*6I[A-Z]*$ 6I	Kalmykia /North Caucusus
+^[RU].*6J[A-Z]*$ 6J	North Ossetia–Alania /North Caucusus
+^[RU].*6K[A-Z]*$ 6K	Crimea /North Caucusus
+^[RU].*6L[A-Z]*$ 6L	Rostov /North Caucusus
+^[RU].*6P[A-Z]*$ 6P	Chechnya /North Caucusus
+^[RU].*6Q[A-Z]*$ 6Q	Ingushetia /North Caucusus
+^[RU].*6U[A-Z]*$ 6U	Astrakhan /North Caucusus
+^[RU].*6W[A-Z]*$ 6W	Dagestan /North Caucusus
+^[RU].*6X[A-Z]*$ 6X	Kabardino-Balkaria /North Caucusus
+^[RU].*6Y[A-Z]*$ 6Y	Adygea /North Caucusus
+^[RU].*7R[A-Z]*$ 7R	Sevastopol /North Caucusus
+
+^[RU].*9A[A-Z]*$ 9A	Chelyabinsk /Urals and West Siberia
+^[RU].*9C[A-Z]*$ 9C	Sverdlovsk /Urals and West Siberia
+^[RU].*9F[A-Z]*$ 9F	Perm /Urals and West Siberia
+^[RU].*9H[A-Z]*$ 9H	Tomsk /Urals and West Siberia
+^[RU].*9J[A-Z]*$ 9J	Khanty–Mansi /Urals and West Siberia
+^[RU].*9K[A-Z]*$ 9K	Yamalo-Nenets /Urals and West Siberia
+^[RU].*9L[A-Z]*$ 9L	Tyumen /Urals and West Siberia
+^[RU].*9M[A-Z]*$ 9M	Omsk /Urals and West Siberia
+^[RU].*9O[A-Z]*$ 9O	Novosibirsk /Urals and West Siberia
+^[RU].*9Q[A-Z]*$ 9Q	Kurgan /Urals and West Siberia
+^[RU].*9S[A-Z]*$ 9S	Orenburg /Urals and West Siberia
+^[RU].*9U[A-Z]*$ 9U	Kemerovo /Urals and West Siberia
+^[RU].*9W[A-Z]*$ 9W	Bashkortostan /Urals and West Siberia
+^[RU].*9X[A-Z]*$ 9X	Komi /Urals and West Siberia
+^[RU].*9Y[A-Z]*$ 9Y	Altai Krai /Urals and West Siberia
+^[RU].*9Z[A-Z]*$ 9Z	Altai Republic /Urals and West Siberia
+
+^[RU].*0A[A-Z]*$ 0A	Krasnoyarsk /East Siberia and Pacific Coast
+^[RU].*0C[A-Z]*$ 0C	Khabarovsk /East Siberia and Pacific Coast
+^[RU].*0D[A-Z]*$ 0D	Jewish Autonomous Oblast /East Siberia and Pacific Coast
+^[RU].*0E[A-Z]*$ 0E	Sakhalin /East Siberia and Pacific Coast
+^[RU].*0I[A-Z]*$ 0I	Magadan /East Siberia and Pacific Coast
+^[RU].*0J[A-Z]*$ 0J	Amur /East Siberia and Pacific Coast
+^[RU].*0K[A-Z]*$ 0K	Chukotka /East Siberia and Pacific Coast
+^[RU].*0L[A-Z]*$ 0L	Primorskiy /East Siberia and Pacific Coast
+^[RU].*0O[A-Z]*$ 0O	Buryatia /East Siberia and Pacific Coast
+^[RU].*0Q[A-Z]*$ 0Q	Sakha /East Siberia and Pacific Coast
+^[RU].*0S[A-Z]*$ 0S	Irkutsk /East Siberia and Pacific Coast
+^[RU].*0U[A-Z]*$ 0U	Zabaykalsky /East Siberia and Pacific Coast
+^[RU].*0W[A-Z]*$ 0W	Khakassia /East Siberia and Pacific Coast
+^[RU].*0Y[A-Z]*$ 0Y	Tuva /East Siberia and Pacific Coast
+^[RU].*0Z[A-Z]*$ 0Z	Kamchatka /East Siberia and Pacific Coast
+
+^[B][A-Z][1][A-Z]{2,3}$	Beijing China (1AA~1XZZ)
+
+^[B][A-Z][2][A-H][A-Z]{1,2}$ Heilongjiang China (2AA~2HZZ)
+^[B][A-Z][2][I-P][A-Z]{1,2}$ Jilin China (2IA~2PZZ)
+^[B][A-Z][2][Q-X][A-Z]{1,2}$ Liaoning China (2QA~2XZZ)
+
+^[B][A-Z][3][A-F][A-Z]{1,2}$ Tianjin China (3AA~3FZZ)
+^[B][A-Z][3][G-L][A-Z]{1,2}$ Neimenggu China (3GA~3LZZ)
+^[B][A-Z][3][M-R][A-Z]{1,2}$ Hebei  China (3MA~3RZZ)
+^[B][A-Z][3][S-X][A-Z]{1,2}$ Shanxi  China (3SA~3XZZ)
+
+^[B][A-Z][4][A-H][A-Z]{1,2}$ Shanghai China (4AA~4HZZ)
+^[B][A-Z][4][I-P][A-Z]{1,2}$ Shandong China (4IA~4PZZ)
+^[B][A-Z][4][Q-X][A-Z]{1,2}$ Jiangsu China (4QA~4XZZ)
+
+^[B][A-Z][5][A-H][A-Z]{1,2}$ Zhejiang China (5AA~5HZZ)
+^[B][A-Z][5][I-P][A-Z]{1,2}$ Jiangxi China (5IA~5PZZ)
+^[B][A-Z][5][Q-X][A-Z]{1,2}$ Fujian China (5QA~5XZZ)
+	
+^[B][A-Z][6][A-H][A-Z]{1,2}$ Anhui China (6AA~6HZZ)
+^[B][A-Z][6][I-P][A-Z]{1,2}$ Henan China (6IA~6PZZ)
+^[B][A-Z][6][Q-X][A-Z]{1,2}$ Hubei China (6QA~6XZZ)
+	
+^[B][A-Z][7][A-H][A-Z]{1,2}$ Hunan China (7AA~7HZZ)
+^[B][A-Z][7][I-P][A-Z]{1,2}$ Guangdong China (7IA~7PZZ)
+^[B][A-Z][7][Q-X][A-Z]{1,2}$ Guangxi China (7QA~7XZZ)
+^[B][A-Z][7][Y][A-Z]{1,2}$ Hainan China (7YA~7YZZ)
+
+^[B][A-Z][8][A-F][A-Z]{1,2}$ Sichuan China (8AA~8FZZ)
+^[B][A-Z][8][G-L][A-Z]{1,2}$ Chongqing China (8GA~8LZZ)
+^[B][A-Z][8][M-R][A-Z]{1,2}$ Guizhou China (8MA~8RZZ)
+^[B][A-Z][8][S-X][A-Z]{1,2}$ Yunnan China (8SA~8XZZ)
+
+^[B][A-Z][9][A-F][A-Z]{1,2}$ Shanxi China (9AA~9FZZ)
+^[B][A-Z][9][G-L][A-Z]{1,2}$ Gansu China (9GA~9LZZ)
+^[B][A-Z][9][M-R][A-Z]{1,2}$ Ningxia China (9MA~9RZZ)
+^[B][A-Z][9][S-X][A-Z]{1,2}$ Qinghai China (9SA~9XZZ)
+	
+^[B][A-Z][0][A-F][A-Z]{1,2}$ Xinjiang China (0AA~0FZZ)
+^[B][A-Z][0][G-L][A-Z]{1,2}$ Xizang China (0GA~0LZZ)
+
+^[V][R][0-9][A-Z]{1,3}$ Taiwan China (0A~9ZZZ)
+^[X][X][9][A-Z]{1,3}$ Macau China (9A~9ZZZ)
+

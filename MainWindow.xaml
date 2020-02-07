@@ -1,0 +1,25 @@
+﻿<Window x:Class="shvAlert.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:shvAlert"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="799" Width="1279">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="640*"/>
+            <ColumnDefinition Width="639*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="DataGridAlertResult" Margin="40,104,39,339" AutoGeneratingColumn="DataGridAlertResult_AutoGeneratingColumn" Grid.ColumnSpan="2"/>
+        <ListView x:Name="ListViewAlertDebug" Margin="40,0,39,19" Grid.ColumnSpan="2" Height="305" VerticalAlignment="Bottom">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="ButtonAlertConnect2Mshv" Content="Connect to MSHV" HorizontalAlignment="Left" Margin="40,24,0,0" VerticalAlignment="Top" Width="160" Click="ButtonAlertConnect2Mshv_Click" Height="40"/>
+        <Button x:Name="ButtonStopAlert" Content="Stop Alert" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top" Height="40" Width="160" Click="ButtonStopAlert_Click"/>
+    </Grid>
+</Window>
