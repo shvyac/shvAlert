@@ -31,13 +31,13 @@ C6A-C6Z	Bahamas
 * C7A-C7Z	World Meteorological Organization
 C8A-C9Z	Mozambique 
 DAA-DRZ	Germany 
-DSA-DTZ	Korea 
+DSA-DTZ	Korea REGEXP 
 DUA-DZZ	Philippines 
 D2A-D3Z	Angola 
 D4A-D4Z	Cape Verde 
 D5A-D5Z	Liberia 
 D6A-D6Z	Comoros 
-D7A-D9Z	Korea 
+D7A-D9Z	Korea REGEXP
 EAA-EHZ	Spain
 EIA-EJZ	Ireland
 EKA-EKZ	Armenia 
@@ -68,8 +68,8 @@ HGA-HGZ	Hungary
 HHA-HHZ	Haiti 
 HIA-HIZ	Dominican 
 HJA-HKZ	Colombia 
-HLA-HLZ	Korea 
-HMA-HMZ	Korea
+HLA-HLZ	Korea REGEXP
+HMA-HMZ	Korea REGEXP
 HNA-HNZ	Iraq 
 HOA-HPZ	Panama 
 HQA-HRZ	Honduras 
@@ -85,7 +85,7 @@ H4A-H4Z	Solomon Islands
 H6A-H7Z	Nicaragua
 H8A-H9Z	Panama 
 IAA-IZZ	Italy
-JAA-JSZ	Japan
+JAA-JSZ	Japan REGEXP
 JTA-JVZ	Mongolia
 JWA-JXZ	Norway
 JYA-JYZ	Jordan 
@@ -124,6 +124,7 @@ P3A-P3Z	Cyprus
 P4A-P4Z	Netherlands  - Aruba
 P5A-P9Z	Democratic People's  of Korea
 RAA-RZZ	Russian REGEXP
+R0A-R9Z	Russian REGEXP
 SAA-SMZ	Sweden
 SNA-SRZ	Poland 
 SSA-SSM	Egypt 
@@ -163,7 +164,7 @@ T5A-T5Z	Somali
 T6A-T6Z	Afghanistan 
 T7A-T7Z	San Marino 
 T8A-T8Z	Palau 
-UAA-UIZ	Russian Federation
+UAA-UIZ	Russian Federation REGEXP
 UJA-UMZ	Uzbekistan 
 UNA-UQZ	Kazakhstan 
 URA-UZZ	Ukraine
@@ -266,7 +267,7 @@ Z8A-Z8Z	South Sudan
 6AA-6BZ	Egypt 
 6CA-6CZ	Syrian Arab 
 6DA-6JZ	Mexico
-6KA-6NZ	Korea 
+6KA-6NZ	Korea REGEXP
 6OA-6OZ	Somali 
 6PA-6SZ	Pakistan 
 6TA-6UZ	Sudan 
@@ -275,7 +276,7 @@ Z8A-Z8Z	South Sudan
 6YA-6YZ	Jamaica
 6ZA-6ZZ	Liberia 
 7AA-7IZ	Indonesia 
-7JA-7NZ	Japan
+7JA-7NZ	Japan REGEXP
 7OA-7OZ	Yemen 
 7PA-7PZ	Lesotho 
 7QA-7QZ	Malawi
@@ -284,7 +285,7 @@ Z8A-Z8Z	South Sudan
 7TA-7YZ	Algeria 
 7ZA-7ZZ	Saudi Arabia 
 8AA-8IZ	Indonesia 
-8JA-8NZ	Japan
+8JA-8NZ	Japan REGEXP
 8OA-8OZ	Botswana 
 8PA-8PZ	Barbados
 8QA-8QZ	Maldives 
