@@ -3,4 +3,4 @@ Alert for MSHV
 
 https://sourceforge.net/projects/mshv/
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Image of shvAlert](https://github.com/shvyac/shvAlert/blob/master/shvalert.png)
