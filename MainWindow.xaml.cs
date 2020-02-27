@@ -63,7 +63,7 @@ namespace shvAlert
 
             DataGridAlertResult.ItemsSource = itemsDecodeModel;
             //ListViewAlertDebug.ItemsSource = itemsHeartbeatModel;
-
+                        
             SetupTimer();
             //Debug.WriteLine("ButtonAlertConnect2Mshv_Click SetupTimer");
             ListViewAlertDebug.Items.Add("ButtonAlertConnect2Mshv_Click SetupTimer");
@@ -255,7 +255,7 @@ namespace shvAlert
             ListViewAlertDebug.Dispatcher.Invoke(() =>
                         {
                             ListViewAlertDebug.Items.Add(strMSG);
-                            ListViewAlertDebug.Items.Refresh();
+                            ListViewAlertDebug.Items.Refresh();                            
 
                             if (ListViewAlertDebug.Items.Count > 0)
                             {
@@ -267,6 +267,14 @@ namespace shvAlert
                                 }
                             }
                         });
+        }
+
+        private void DispatcherLABEL(Label labelName, string strMSG)
+        {
+            labelName.Dispatcher.Invoke(() =>
+            {
+                labelName.Content =strMSG;
+            });
         }
 
         private void ReceiveUDPCallback(IAsyncResult ar)
@@ -318,14 +326,19 @@ namespace shvAlert
             {
                 case 0://Heartbeat Out/In 0 quint32
 
-                    string id0 = nmu.Unpackstring(rcvBytes, "id");//Id (unique key) utf8
-                    uint maxsch = nmu.Unpack4uint(rcvBytes, "maxscheme");//Maximum schema number quint32
-                    string version = nmu.Unpackstring(rcvBytes, "version");//version utf8
-                    string revision = nmu.Unpackstring(rcvBytes, "revision");//revision utf8
+                    string id0 = nmu.Unpackstring(rcvBytes, "id");              //Id (unique key) utf8
+                    uint maxsch = nmu.Unpack4uint(rcvBytes, "maxscheme");       //Maximum schema number quint32
+                    string version = nmu.Unpackstring(rcvBytes, "version");     //version utf8
+                    string revision = nmu.Unpackstring(rcvBytes, "revision");   //revision utf8
 
-                    string hm = string.Format("{0} {1} {2} {3}", id0, maxsch, version, revision);
+                    string hm = string.Format("id {0}, maxscheme {1}, version {2}, revision{3}", id0, maxsch, version, revision);
 
-                    DispatcherMSG(hm);
+                    DispatcherLABEL(LabelID, id0);
+                    DispatcherLABEL(LabelMaximumSchemaNum, maxsch.ToString());
+                    DispatcherLABEL(LabelVersion, version);
+                    DispatcherLABEL(LabelRevision, revision);
+
+                    //DispatcherMSG(hm);
 
                     break;
 
@@ -353,11 +366,28 @@ namespace shvAlert
                         bool FastModeBool = nmu.Unpackbool(rcvBytes, "FastModeBool");           //Fast mode bool
                         int SpecialOpMode = nmu.Unpack1int(rcvBytes, "SpecialOpMode");          //Special operation mode quint8
 
-                        string sm = string.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12} {13} {14} {15} {16} {17} ",
-                            id1, DialFrequency, Mode, DXcall, Report, TxMode, TxEnbledBool, TransmittingBool, DecodingBool, RxDF, TxDF,
-                            DEcall, DEgrid, DXgrid, TxWatchingBool, SubMode, FastModeBool, SpecialOpMode);
+                        string sm = string.Format(
+                            "{0}, {1}, {2}, {3}, {4}, {5}," +
+                            "TxEnbledBool {6}, TransmittingBool {7}, DecodingBool {8}, RxDF {9}, TxDF {10}," +
+                            " {11}, {12}, {13}, TxWatchingBool {14}, SubMode {15}," +
+                            "FastModeBool {16}, SpecialOpMode {17}",
+                            id1, DialFrequency, Mode, DXcall, Report, TxMode, 
+                            TxEnbledBool, TransmittingBool, DecodingBool, RxDF, TxDF, 
+                            DEcall, DEgrid, DXgrid, TxWatchingBool, SubMode, 
+                            FastModeBool, SpecialOpMode
+                            );
 
                         DispatcherMSG(sm);
+
+                        DispatcherLABEL(LabelDialFrequency, (DialFrequency/1000).ToString("#,0"));
+                        DispatcherLABEL(LabelDXcall, DXcall);
+                        DispatcherLABEL(LabelDEcall, DEcall);
+                        DispatcherLABEL(LabelDXgrid, DXgrid);
+                        DispatcherLABEL(LabelDEgrid, DEgrid);
+                        DispatcherLABEL(LabelMode, Mode);
+                        DispatcherLABEL(LabelTxMode, TxMode);
+                        DispatcherLABEL(LabelReport, Report);
+
 
                         //ListViewAlertDebug.Dispatcher.Invoke(() =>
                         //{
@@ -400,15 +430,20 @@ namespace shvAlert
                         int TRPeriod = nmu.Unpack4int(rcvBytes, "TRPeriod");                                  //T / R Period quint32
                         string ConfigurationName = nmu.Unpackstring(rcvBytes, "ConfigurationName");          //Configuration Name utf8
 
-                        string sm = string.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12} {13} {14} {15} {16} {17} {18} {19} {20} ",
+                        string sm = string.Format(
+                            "{0}, DialFrequency {1}, Mode {2}, DXcall {3}, Report {4}, TxMode {5}," +
+                            "TxEnbledBool {6}, TransmittingBool {7}, DecodingBool {8}, RxDF {9}, TxDF {10}," +
+                            "DEcall {11}, DEgrid {12}, DXgrid {13}, TxWatchingBool {14}, SubMode {15}," +
+                            "FastModeBool {16}, SpecialOpMode {17}, FrequencyTolerance {18}, TRPeriod {19}, ConfigurationName {20} ",
                             id1, DialFrequency, Mode, DXcall, Report, TxMode, TxEnbledBool, TransmittingBool, DecodingBool, RxDF, TxDF,
-                            DEcall, DEgrid, DXgrid, TxWatchingBool, SubMode, FastModeBool, SpecialOpMode, FrequencyTolerance, TRPeriod, ConfigurationName);
+                            DEcall, DEgrid, DXgrid, TxWatchingBool, SubMode, FastModeBool, SpecialOpMode, FrequencyTolerance, TRPeriod, ConfigurationName
+                            );
 
                         DispatcherMSG(sm);
                     }
                     else
                     {
-                        Debug.WriteLine("*** Illegal id1 {0} Found. It is not MSHV and WSJT.", id1);
+                        DispatcherMSG(string.Format("*** Illegal id1 {0} Found. It is not MSHV and WSJT.", id1));
                     }
 
                     break;
@@ -473,6 +508,7 @@ namespace shvAlert
             Debug.WriteLine("BeginReceive Again");
         }
 
+        
         private void DataGridAlertResult_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             Style h_Right = new Style();

@@ -9,10 +9,9 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="640*"/>
-            <ColumnDefinition Width="639*"/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="DataGridAlertResult" Margin="40,104,39,339" AutoGeneratingColumn="DataGridAlertResult_AutoGeneratingColumn" Grid.ColumnSpan="2"/>
-        <ListView x:Name="ListViewAlertDebug" Margin="40,0,39,19" Grid.ColumnSpan="2" Height="305" VerticalAlignment="Bottom">
+        <ListView x:Name="ListViewAlertDebug" Margin="40,0,39,19" Height="305" VerticalAlignment="Bottom">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -20,6 +19,18 @@
             </ListView.View>
         </ListView>
         <Button x:Name="ButtonAlertConnect2Mshv" Content="Connect to MSHV" HorizontalAlignment="Left" Margin="40,24,0,0" VerticalAlignment="Top" Width="160" Click="ButtonAlertConnect2Mshv_Click" Height="40"/>
-        <Button x:Name="ButtonStopAlert" Content="Stop Alert" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top" Height="40" Width="160" Click="ButtonStopAlert_Click"/>
+        <Button x:Name="ButtonStopAlert" Content="Stop Alert" HorizontalAlignment="Left" Margin="1160,24,0,0" VerticalAlignment="Top" Height="40" Width="80" Click="ButtonStopAlert_Click"/>
+        <Label x:Name="LabelID" Content="ID" HorizontalAlignment="Left" Margin="240,24,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="LabelRevision" Content="Revision" HorizontalAlignment="Left" Margin="360,60,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" Height="Auto" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="LabelMaximumSchemaNum" Content="Maximum Schema Number" HorizontalAlignment="Left" Margin="360,24,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" Height="Auto" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="LabelVersion" Content="Version" HorizontalAlignment="Left" Margin="240,60,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="LabelDialFrequency" Content="DialFrequency" HorizontalAlignment="Left" Margin="520,26,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold"/>
+        <Label x:Name="LabelReport" Content="Report" HorizontalAlignment="Left" Margin="899,26,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" Height="Auto" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold"/>
+        <Label x:Name="LabelMode" Content="Mode" HorizontalAlignment="Left" Margin="1025,26,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" Height="Auto" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="LabelDXcall" Content="DXcall" HorizontalAlignment="Left" Margin="640,26,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold"/>
+        <Label x:Name="LabelTxMode" Content="TxMode" HorizontalAlignment="Left" Margin="1025,62,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="LabelDXgrid" Content="DXgrid" HorizontalAlignment="Left" Margin="770,26,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" Height="Auto" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold"/>
+        <Label x:Name="LabelDEgrid" Content="DEgrid" HorizontalAlignment="Left" Margin="770,62,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" Height="Auto" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="LabelDEcall" Content="DEcall" HorizontalAlignment="Left" Margin="640,62,0,0" VerticalAlignment="Top" Width="115" Background="Gainsboro" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
     </Grid>
 </Window>
