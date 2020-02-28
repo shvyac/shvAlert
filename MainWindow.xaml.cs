@@ -40,7 +40,8 @@ namespace shvAlert
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
+
             Read_Call_Series();
             Read_Def_REGEXP();
         }
@@ -50,6 +51,7 @@ namespace shvAlert
 
         List<UDPModel.StatusModel> itemsStatusModel = new List<UDPModel.StatusModel>();
         List<UDPModel.DecodeModel> itemsDecodeModel = new List<UDPModel.DecodeModel>();
+
         private System.Net.Sockets.UdpClient udpClient = null;
         private DispatcherTimer _timer;
         //List<UDPModel.HeartbeatModel> itemsHeartbeatModel = new List<UDPModel.HeartbeatModel>();
@@ -277,6 +279,8 @@ namespace shvAlert
             });
         }
 
+        private string gMyGridLoc;
+
         private void ReceiveUDPCallback(IAsyncResult ar)
         {
             System.Net.Sockets.UdpClient udp = (System.Net.Sockets.UdpClient)ar.AsyncState;
@@ -305,8 +309,8 @@ namespace shvAlert
             string displayMsg = string.Format("[{0} ({1})] > {2}", remoteEP.Address, remoteEP.Port, rcvMsg);
             string rcvHEX = BitConverter.ToString(rcvBytes);
 
-            Debug.WriteLine(rcvHEX);
-            Debug.WriteLine(displayMsg);
+            //Debug.WriteLine(rcvHEX);
+            //Debug.WriteLine(displayMsg);
 
             //-----------------------------------------------
 
@@ -320,7 +324,7 @@ namespace shvAlert
             uint iMagic = nmu.Unpack4uint(rcvBytes, "magic");
             uint iSchema = nmu.Unpack4uint(rcvBytes, "schema");
             uint iMessageType = nmu.Unpack4uint(rcvBytes, "messageType");
-            Debug.WriteLine("iMessageType {0}", iMessageType);
+            Debug.WriteLine("iMessageType = {0}", iMessageType);
 
             switch (iMessageType)
             {
@@ -377,6 +381,8 @@ namespace shvAlert
                             FastModeBool, SpecialOpMode
                             );
 
+                        gMyGridLoc = DEgrid;
+
                         DispatcherMSG(sm);
 
                         DispatcherLABEL(LabelDialFrequency, (DialFrequency/1000).ToString("#,0"));
@@ -387,24 +393,6 @@ namespace shvAlert
                         DispatcherLABEL(LabelMode, Mode);
                         DispatcherLABEL(LabelTxMode, TxMode);
                         DispatcherLABEL(LabelReport, Report);
-
-
-                        //ListViewAlertDebug.Dispatcher.Invoke(() =>
-                        //{
-                        //    ListViewAlertDebug.Items.Add(sm);
-                        //    Debug.WriteLine(ListViewAlertDebug.Items.Count);
-                        //    ListViewAlertDebug.Items.Refresh();
-
-                        //    if (ListViewAlertDebug.Items.Count > 0)
-                        //    {
-                        //        var border = VisualTreeHelper.GetChild(ListViewAlertDebug, 0) as Decorator;
-                        //        if (border != null)
-                        //        {
-                        //            var scroll = border.Child as ScrollViewer;
-                        //            if (scroll != null) scroll.ScrollToEnd();
-                        //        }
-                        //    }
-                        //});
                     }
                     else if (id1.Contains("WSJT"))
                     {
@@ -449,31 +437,33 @@ namespace shvAlert
                     break;
 
                 case 2: //----------------------------------------------------------------------Decode
-                    string id2 = nmu.Unpackstring(rcvBytes, "id");
-                    bool boNew = nmu.Unpackbool(rcvBytes, "isNew");
+                    string id2      = nmu.Unpackstring(rcvBytes, "id");
+                    bool boNew      = nmu.Unpackbool(rcvBytes, "isNew");
                     DateTime datetm = nmu.UnpackDateTime(rcvBytes, "tm");
-                    int SNR = nmu.Unpack4int(rcvBytes, "snr");
-                    float DT = nmu.Unpack8float(rcvBytes, "dt");
-                    uint DF = nmu.Unpack4uint(rcvBytes, "df");
-                    string MODE = nmu.Unpackstring(rcvBytes, "mode");
-                    string Message = nmu.Unpackstring(rcvBytes, "message");
+                    int SNR         = nmu.Unpack4int(rcvBytes, "snr");
+                    float DT        = nmu.Unpack8float(rcvBytes, "dt");
+                    uint DF         = nmu.Unpack4uint(rcvBytes, "df");
+                    string MODE     = nmu.Unpackstring(rcvBytes, "mode");
+                    string Message  = nmu.Unpackstring(rcvBytes, "message");
 
-                    string[] strCountry = GetCountry(Message);
+                    string[] strCountry = GetCountry(Message);  // Get Call Sign Allocation Info. strCountry[2]=Distance Km
 
                     dm = new UDPModel.DecodeModel()
                     {
                         //heartbeat_client_id = iMagic,
                         //heartbeat_maximum_schema_number = iSchema,
-                        decode_client_id = id2,
-                        decode_new = boNew,
-                        decode_time = datetm,
-                        decode_snr = SNR,
-                        decode_delta_time = Math.Round(DT, 1),
-                        decode_delta_frequency = DF,
-                        decode_mode = MODE,
-                        decode_message = Message,
-                        alloc_left = strCountry[0],
-                        alloc_right = strCountry[1]
+                        decode_client_id        = id2,
+                        decode_new              = boNew,
+                        decode_time             = datetm,
+                        decode_snr              = SNR,
+                        decode_delta_time       = Math.Round(DT, 1),
+                        decode_delta_frequency  = DF,
+                        decode_mode             = MODE,
+                        decode_message          = Message,
+                        alloc_left              = strCountry[0], // Left Call
+                        alloc_right             = strCountry[1], // Right Call
+                        distance_from_here      = strCountry[2],
+                        distance_between_them   = @""
                     };
 
                     DataGridAlertResult.Dispatcher.Invoke(() =>
@@ -505,7 +495,7 @@ namespace shvAlert
 
             //再びデータ受信を開始する
             udp.BeginReceive(ReceiveUDPCallback, udp);
-            Debug.WriteLine("BeginReceive Again");
+            //Debug.WriteLine("BeginReceive Again");
         }
 
         
@@ -548,6 +538,12 @@ namespace shvAlert
                 case "alloc_right":
                     e.Column.Header = "Call 2";
                     break;
+                case "distance_from_here":
+                    e.Column.Header = "From Here Km";
+                    break;
+                case "distance_between_them":
+                    e.Column.Header = "Between Km";
+                    break;
 
                 default:
                     e.Column.Header = "Default";
@@ -561,30 +557,76 @@ namespace shvAlert
         //    return retCountry;
         //}
 
-        public string[] GetCountry(string decodedMSG)// JA1AAA JH1SSS PM96
+        public string[] GetCountry(string decodedMSG)
         {
-            string[] retCountry = new string[2];
+            // CQ JA1AAA PM96
+            // JA1AAA JA9SSS PM96
+            // JA1AAA JA9SSS -10
+            // JA1AAA JA9SSS R-10
+            // JA1AAA JA9SSS 73
+            // JA1AAA JA9SSS RR73
+            // JA1AAA JA9SSS RRR
+
+            //-----------------------------------------------------
+            //string[] retCountry = new string[2];  // LeftCall RightCall
+
+            string[] retCountry = new string[3];  // LeftCall RightCall RightCallDistance Km
+            
             string[] fields = decodedMSG.Split(' ');
+            int fieldsLength = fields.Length;
+            if (fieldsLength < 2  || 4 < fieldsLength)
+            {
+                
+            }
+            switch (fieldsLength)
+            {
+                case 2://  JA1AAA JA9SSS
+                    DispatcherMSG(decodedMSG + " --- Length 2");
+
+                    Array.Resize(ref fields, fields.Length + 1);
+                    fields[fields.Length - 1] = @"NULL";
+                    retCountry[2] = @"Null GL";
+                    break;
+
+                case 3://  JA1AAA JA9SSS PM96
+                    Debug.WriteLine("===> " + fields[2]); // PM96 73 RR73 RRR
+                    break;
+
+                case 4:
+                    // CQ EU JA1AAA PM96
+                    DispatcherMSG(decodedMSG + " --- Length 4");
+
+                    var list = new List<string>();
+                    list.AddRange(fields);
+                    list.RemoveAt(1);
+                    fields = list.ToArray();                    
+                    break;
+
+                default:
+                    DispatcherMSG(decodedMSG + " --- Length " + fieldsLength);
+                    break;
+            }
 
             for (int i = 0; i < 2; i++)
             {
-                string pre1 = fields[i].Replace("<", "");
-                string pre2 = pre1.Substring(0, 2);
+                string calli = CheckIllegalCall(fields[i]);
+                string pre2 = calli.Substring(0, 2);
+
                 if (pre2 == @"CQ")
                 {
                     retCountry[i] = pre2;
                 }
                 else
                 {
-                    Debug.WriteLine(pre2);
+                    Debug.Write(pre2 + " in " + calli + " " + i + ", ");
 
                     if (callsignseries.Exists(x => x.strPrefix.Contains(pre2)))
                     {
                         retCountry[i] = callsignseries.Find(x => x.strPrefix == pre2).strName;
-                        Debug.WriteLine(retCountry[i] + " exists in " + decodedMSG);
+                        Debug.WriteLine(retCountry[i] + " exists in callsignseries, " + decodedMSG);
 
                         if (retCountry[i].Contains("REGEXP"))
-                        {
+                        {                          
                             string Province = GetCountryREGEXP(fields[i]);
                             retCountry[i] = Province;
                             Debug.WriteLine("REGEXP: " + Province + " " + fields[i]);
@@ -593,12 +635,45 @@ namespace shvAlert
                     else
                     {
                         retCountry[i] = pre2 + " n/a";
-                        Debug.WriteLine(pre2 + "  NOT FOUND in " + decodedMSG);
+                        string s = decodedMSG + ", Prefix " + pre2 + " NOT FOUND in callsignseries";
+                        Debug.WriteLine(s);
+                        DispatcherMSG(s);
                     }
                 }
                 //Debug.WriteLine(retCountry[i]);     
             }
+
+            //Debug.WriteLine("===> " + fields[2]);
+            Match match2 = Regex.Match(fields[2], @"[A-R]{2}[0-9]{2}");
+            if (0 < match2.Value.Length)
+            {
+                if (fields[2] != @"RR73")
+                {
+                    int dist = GetDistanceBetween(fields[2], gMyGridLoc);       // Get Distance Between 
+                    retCountry[2] = dist.ToString();
+                }
+                else
+                {
+                    retCountry[2] = @"";
+                }
+            }
+
             return retCountry;
+        }
+
+        public string CheckIllegalCall(string callSign)// <RA0AA> JA1AAA/M 
+        {
+            int orgLength = callSign.Length;
+            string orgCall = callSign;
+
+            if (callSign.Contains(@"<")) callSign = callSign.Replace(@"<", @"");
+            if (callSign.Contains(@">")) callSign = callSign.Replace(@">", @"");
+            if (callSign.Contains(@"/")) callSign = callSign.Substring(0, callSign.LastIndexOf(@"/")-1);
+            if (orgLength != callSign.Length)
+            {
+                DispatcherMSG(@"CheckIllegalCall Modified: " + orgCall + " to " + callSign);
+            }
+            return callSign;
         }
 
         public string GetCountryREGEXP(string callSign)// RA0AA
@@ -612,6 +687,82 @@ namespace shvAlert
                 }
             }
             return "Province NOT found in " + callSign;
+        }
+
+        public int GetDistanceBetween(string DxGrid, string DeGrid)
+        {
+            //int[] retCountry = new int[2];
+            //DxGrid = @"NO65";
+            //DeGrid = @"PM96";
+
+            char[] cdx = DxGrid.ToCharArray();
+            char[] cde = DeGrid.ToCharArray();
+
+            double lonDX = ((int)cdx[0] - 65) * 20.0 + Convert.ToInt32(cdx[2].ToString()) * 2.0 +1.0   - 180.0;
+            double latDX  = ((int)cdx[1] - 65) * 10.0 + Convert.ToInt32(cdx[3].ToString())  + 0.5 - 90.0;
+
+            double lonDE = ((int)cde[0] - 65) * 20.0 + Convert.ToInt32(cde[2].ToString()) * 2.0 +1.0  - 180.0;
+            double latDE = ((int)cde[1] - 65) * 10.0 + Convert.ToInt32(cde[3].ToString()) + 0.5  - 90.0;
+
+            //int longitude =(CODE(MID(A1,1,1))-65)*20 + VALUE(MID(A1,3,1))*2 + (CODE(MID(A1,5,1))-97)/12 + 1/24 - 180
+            //int latitude  =(CODE(MID(A1, 2, 1)) - 65) * 10 + VALUE(MID(A1, 4, 1)) + (CODE(MID(A1, 6, 1)) - 97) / 24 + 1 / 48 - 90;
+            //--------------------------------------------------------------Convert to ASCII Code. A=65 Z=90 0=48 9=57 Decimal
+
+            /*
+            Assuming for the sake of precision that the particular point in the grid square 
+            that you want the exact latitude and longitude for is the midpoint of the 6-character subsquare, 
+            this can be done readily with Excel formulas.
+            If the 6-character grid square data is in cell A1, in a format similar to AA00aa (i.e. upper-case, then digits, then lower-case), 
+            the formula for the latitude (based directly on the Python code posted previously) is:
+
+            =(CODE(MID(A1,2,1))-65)*10 + VALUE(MID(A1,4,1)) + (CODE(MID(A1,6,1))-97)/24 + 1/48 - 90
+
+            and the formula for the longitude is
+
+            =(CODE(MID(A1,1,1))-65)*20 + VALUE(MID(A1,3,1))*2 + (CODE(MID(A1,5,1))-97)/12 + 1/24 - 180
+
+            If you want the latitude and longitude of the southwest corner of the subsquare, just leave out the + 1/48 and + 1/24 terms. 
+            Add error-checking, upper- and lower-case conversion, conversion of four-character squares to six-character by adding 'mm', 
+            and other embellishments as you see fit.
+            */
+
+            return CalcDistance(latDX, latDE, lonDX, lonDE);
+        }
+
+        public int CalcDistance(double lat1, double lat2, double lon1, double lon2)
+        {
+            double R = 6371000;
+            double phi1 = ToRadian(lat1);
+            double phi2 = ToRadian(lat2);
+            double deltaPhi = ToRadian(lat2 - lat1);
+            double deltaLambda = ToRadian(lon2 - lon1);
+
+            double a = Math.Sin(deltaPhi / 2) * Math.Sin(deltaPhi / 2) +
+                    Math.Cos(phi1) * Math.Cos(phi2) *
+                    Math.Sin(deltaLambda / 2) * Math.Sin(deltaLambda / 2);
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+            double d = R * c / 1000.0 ; //Km
+
+            /*
+            var R = 6371e3; // metres
+            var φ1 = lat1.toRadians();
+            var φ2 = lat2.toRadians();
+            var Δφ = (lat2-lat1).toRadians();
+            var Δλ = (lon2-lon1).toRadians();
+            var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                    Math.cos(φ1) * Math.cos(φ2) *
+                    Math.sin(Δλ/2) * Math.sin(Δλ/2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            var d = R * c;
+            */
+
+            return (int)d;  //Km
+        }
+
+        public double ToRadian(double angle)
+        {
+            return (double)(angle * Math.PI / 180);
         }
     }
 }

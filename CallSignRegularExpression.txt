@@ -187,11 +187,230 @@ UI9ZZZ
 ^[J][R-S][6][A-Z]{3}$ Okinawa 沖縄 JR6, JS6 /Japan
 ^[J78][A-S][6][A-Z]{3}$ Kyushu 九州 JA6–JS6, 7J6, 8J6–8N6 /Japan
 
-^[DH6][S-T,7-9][0][A-Z]{3}$ 0: Science, University Stations /South Korea
-^[DH6][S-T,7-9][1][A-Z]{3}$ 1: Seoul Metropolitan Cities /South Korea
-^[DH6][S-T,7-9][2][A-Z]{3}$ 2: Northern Third (Incheon, Gyeonggi, Gangwon) /South Korea
-^[DH6][S-T,7-9][3][A-Z]{3}$ 3: West Central (Daejeon, Chungcheongnam, Chungcheongbuk) /South Korea
-^[DH6][S-T,7-9][4][A-Z]{3}$ 4: South West (Gwangju, Jeollabuk, Jeolanam, Jeju) /South Korea
-^[DH6][S-T,7-9][5][A-Z]{3}$ 5: South East (Busan, Daegu, Ulsan, Geongsangbuk, Geongsangnam) /South Korea
-^[H][L][8][A-Z]{3}$ 8: Antarctica (always HL8) /South Korea
-^[H][L][9][A-Z]{3}$ 9: United States USFK personnel (always HL9)[8] /South Korea
+^(DS|DT|D7|D8|D9|HL|6K|6L|6M|6N)[0][A-Z]{3}$ 0: Science, University Stations /South Korea
+^(DS|DT|D7|D8|D9|HL|6K|6L|6M|6N)[1][A-Z]{3}$ 1: Seoul Metropolitan Cities /South Korea
+^(DS|DT|D7|D8|D9|HL|6K|6L|6M|6N)[2][A-Z]{3}$ 2: Northern Third (Incheon, Gyeonggi, Gangwon) /South Korea
+^(DS|DT|D7|D8|D9|HL|6K|6L|6M|6N)[3][A-Z]{3}$ 3: West Central (Daejeon, Chungcheongnam, Chungcheongbuk) /South Korea
+^(DS|DT|D7|D8|D9|HL|6K|6L|6M|6N)[4][A-Z]{3}$ 4: South West (Gwangju, Jeollabuk, Jeolanam, Jeju) /South Korea
+^(DS|DT|D7|D8|D9|HL|6K|6L|6M|6N)[5][A-Z]{3}$ 5: South East (Busan, Daegu, Ulsan, Geongsangbuk, Geongsangnam) /South Korea
+^HL8[A-Z]{3}$ 8: Antarctica (always HL8) /South Korea
+^HL9[A-Z]{3}$ 9: United States USFK personnel (always HL9)[8] /South Korea
+
+DSA–DTZ	Korea (Republic of), South Korea
+D7A–D9Z	Korea (Republic of), South Korea
+HLA–HLZ	Korea (Republic of), South Korea
+HMA–HMZ	Democratic People's Republic of Korea (North Korea)
+P5A–P9Z	Democratic People's Republic of Korea (North Korea)
+6KA–6NZ	Korea (Republic of), South Korea
+
+
+Group A - Amateur Extra Class
+Primary stations licensed to Amateur Extra class operators.
+Region	Prefix	Letters in Suffix
+1-10	K, N, or W, and two letter suffix;	2
+
+^[KNW][1][A-Z]{2}$ CT, Maine, MA, New Hampshire, Rhode Island and Vermont 1 /AmateurExtra/USA
+^[KNW][2][A-Z]{2}$ New Jersey and New York 2 /AmateurExtra/USA
+^[KNW][3][A-Z]{2}$ Delaware, DC, Maryland and Pennsylvania 3 /AmateurExtra/USA
+^[KNW][4][A-Z]{2}$ AL FL GA KY NC SC TN VA 4 /AmateurExtra/USA
+^[KNW][5][A-Z]{2}$ Arkansas, Louisiana, Mississippi, New Mexico, Oklahoma and Texas	5 /AmateurExtra/USA
+^[KNW][6][A-Z]{2}$ California 6 /AmateurExtra/USA
+^[KNW][7][A-Z]{2}$ Arizona, Idaho, Montana, Nevada, Oregon, Utah, Washington and Wyoming 7 /AmateurExtra/USA
+^[KNW][8][A-Z]{2}$ Michigan, Ohio and West Virginia	8 /AmateurExtra/USA
+^[KNW][9][A-Z]{2}$ Illinois, Indiana and Wisconsin	9 /AmateurExtra/USA
+^[KNW][0][A-Z]{2}$ CO IA KS MN MO NE ND SD	0 /AmateurExtra/USA
+
+
+two letter prefix with first letter A, N, K, or W	1
+^[ANKW][A-Z][1][A-Z]{1}$ CT, Maine, MA, New Hampshire, Rhode Island and Vermont 1 /AmateurExtra/USA
+^[ANKW][A-Z][2][A-Z]{1}$ New Jersey and New York 2 /AmateurExtra/USA
+^[ANKW][A-Z][3][A-Z]{1}$ Delaware, DC, Maryland and Pennsylvania 3 /AmateurExtra/USA
+^[ANKW][A-Z][4][A-Z]{1}$ AL FL GA KY NC SC TN VA 4 /AmateurExtra/USA
+^[ANKW][A-Z][5][A-Z]{1}$ Arkansas, Louisiana, Mississippi, New Mexico, Oklahoma and Texas	5 /AmateurExtra/USA
+^[ANKW][A-Z][6][A-Z]{1}$ California 6 /AmateurExtra/USA
+^[ANKW][A-Z][7][A-Z]{1}$ Arizona, Idaho, Montana, Nevada, Oregon, Utah, Washington and Wyoming 7 /AmateurExtra/USA
+^[ANKW][A-Z][8][A-Z]{1}$ Michigan, Ohio and West Virginia	8 /AmateurExtra/USA
+^[ANKW][A-Z][9][A-Z]{1}$ Illinois, Indiana and Wisconsin	9 /AmateurExtra/USA
+^[ANKW][A-Z][0][A-Z]{1}$ CO IA KS MN MO NE ND SD	0 /AmateurExtra/USA
+
+two letter prefix with first letter A	2
+^[A][A-Z][1][A-Z]{2}$ CT, Maine, MA, New Hampshire, Rhode Island and Vermont 1 /AmateurExtra/USA
+^[A][A-Z][2][A-Z]{2}$ New Jersey and New York 2 /AmateurExtra/USA
+^[A][A-Z][3][A-Z]{2}$ Delaware, DC, Maryland and Pennsylvania 3 /AmateurExtra/USA
+^[A][A-Z][4][A-Z]{2}$ AL FL GA KY NC SC TN VA 4 /AmateurExtra/USA
+^[A][A-Z][5][A-Z]{2}$ Arkansas, Louisiana, Mississippi, New Mexico, Oklahoma and Texas	5 /AmateurExtra/USA
+^[A][A-Z][6][A-Z]{2}$ California 6 /AmateurExtra/USA
+^[A][A-Z][7][A-Z]{2}$ Arizona, Idaho, Montana, Nevada, Oregon, Utah, Washington and Wyoming 7 /AmateurExtra/USA
+^[A][A-Z][8][A-Z]{2}$ Michigan, Ohio and West Virginia	8 /AmateurExtra/USA
+^[A][A-Z][9][A-Z]{2}$ Illinois, Indiana and Wisconsin	9 /AmateurExtra/USA
+^[A][A-Z][0][A-Z]{2}$ CO IA KS MN MO NE ND SD	0 /AmateurExtra/USA
+
+11	AL, KL, NL, or WL	1
+^(NL|KL|AL|WL)\d[A-Z]$ Alaska 0-9 /AmateurExtra/USA
+
+12	KP, NP, or WP	1
+^(KP|NP|WP)[1][A-Z]$ Navassa Island	1 Caribbean Insular areas/AmateurExtra/USA
+^(KP|NP|WP)[2][A-Z]$ Virgin Islands	2 Caribbean Insular areas/AmateurExtra/USA
+^(KP|NP|WP)[34][A-Z]$ Commonwealth of Puerto Rico except Desecheo Island	3 or 4 Caribbean Insular areas/AmateurExtra/USA
+^(KP|NP|WP)[5][A-Z]$ Desecheo Island	5 Caribbean Insular areas/AmateurExtra/USA
+
+13	AH, KH, NH, or WH	1
+13	Hawaii and Pacific Insular areas:
+^(AH|KH|NH|WH)[1][A-Z]$ Baker or Howland Island	1 Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[2][A-Z]$ Guam	2 Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[3][A-Z]$ Johnston Island	3 Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[4][A-Z]$ Midway Island	4 Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[5][K]$ Kingman Reef	5 followed by suffix letter K Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[5][A-Z]$ Palmyra or Jarvis Island	5 Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[7][K]$ Kure Island	7 followed by the letter K Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[67][A-Z]$ Hawaii except Kure Island	6 or 7 Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[8][A-Z]$ American Samoa	8 Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[9][A-Z]$ Wake, Wilkes, or Peale Island	9 Hawaii and Pacific Insular areas/AmateurExtra/USA
+^(AH|KH|NH|WH)[0][A-Z]$ Commonwealth of Northern Mariana Islands	0 Hawaii and Pacific Insular areas/AmateurExtra/USA
+
+Group B - Advanced Class
+Primary stations licensed to Advanced class operators.
+Region	Prefix	Letters in Suffix
+1-10	Two letter prefix with first letter K, N, or W	2
+^[KNW][A-Z][1][A-Z]{2}$ CT, Maine, MA, New Hampshire, Rhode Island and Vermont 1 /Advanced/USA
+^[KNW][A-Z][2][A-Z]{2}$ New Jersey and New York 2 /Advanced/USA
+^[KNW][A-Z][3][A-Z]{2}$ Delaware, DC, Maryland and Pennsylvania 3 /Advanced/USA
+^[KNW][A-Z][4][A-Z]{2}$ AL FL GA KY NC SC TN VA 4 /Advanced/USA
+^[KNW][A-Z][5][A-Z]{2}$ Arkansas, Louisiana, Mississippi, New Mexico, Oklahoma and Texas	5 /Advanced/USA
+^[KNW][A-Z][6][A-Z]{2}$ California 6 /Advanced/USA
+^[KNW][A-Z][7][A-Z]{2}$ Arizona, Idaho, Montana, Nevada, Oregon, Utah, Washington and Wyoming 7 /Advanced/USA
+^[KNW][A-Z][8][A-Z]{2}$ Michigan, Ohio and West Virginia	8 /Advanced/USA
+^[KNW][A-Z][9][A-Z]{2}$ Illinois, Indiana and Wisconsin	9 /Advanced/USA
+^[KNW][A-Z][0][A-Z]{2}$ CO IA KS MN MO NE ND SD	0 /Advanced/USA
+
+11	AL	2
+^(AL)\d[A-Z]{2}$ Alaska 0-9 /Advanced/USA
+
+12	KP	2
+^(KP)[1][A-Z]{2}$ Navassa Island	1 Caribbean Insular areas/Advanced/USA
+^(KP)[2][A-Z]{2}$ Virgin Islands	2 Caribbean Insular areas/Advanced/USA
+^(KP)[34][A-Z]{2}$ Commonwealth of Puerto Rico except Desecheo Island	3 or 4 Caribbean Insular areas/Advanced/USA
+^(KP)[5][A-Z]{2}$ Desecheo Island	5 Caribbean Insular areas/Advanced/USA
+
+13	AH	2
+^(AH)[1][A-Z]{2}$ Baker or Howland Island	1 Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[2][A-Z]{2}$ Guam	2 Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[3][A-Z]{2}$ Johnston Island	3 Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[4][A-Z]{2}$ Midway Island	4 Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[5][K]{2}$ Kingman Reef	5 followed by suffix letter K Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[5][A-Z]{2}$ Palmyra or Jarvis Island	5 Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[7][K]{2}$ Kure Island	7 followed by the letter K Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[67][A-Z]{2}$ Hawaii except Kure Island	6 or 7 Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[8][A-Z]{2}$ American Samoa	8 Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[9][A-Z]{2}$ Wake, Wilkes, or Peale Island	9 Hawaii and Pacific Insular areas/Advanced/USA
+^(AH)[0][A-Z]{2}$ Commonwealth of Northern Mariana Islands	0 Hawaii and Pacific Insular areas/Advanced/USA
+
+
+Group C - General, Technician, and Technician Plus Classes
+Primary stations licensed to General, Technician, and Technician Plus class operators.
+Region	Prefix	Letters in Suffix
+1-10	K, N, or W	3
+^[KNW][1][A-Z]{3}$ CT, Maine, MA, New Hampshire, Rhode Island and Vermont 1 /General,Technician,TechnicianPlus/USA
+^[KNW][2][A-Z]{3}$ New Jersey and New York 2 /General,Technician,TechnicianPlus/USA
+^[KNW][3][A-Z]{3}$ Delaware, DC, Maryland and Pennsylvania 3 /General,Technician,TechnicianPlus/USA
+^[KNW][4][A-Z]{3}$ AL FL GA KY NC SC TN VA 4 /General,Technician,TechnicianPlus/USA
+^[KNW][5][A-Z]{3}$ Arkansas, Louisiana, Mississippi, New Mexico, Oklahoma and Texas	5 /General,Technician,TechnicianPlus/USA
+^[KNW][6][A-Z]{3}$ California 6 /General,Technician,TechnicianPlus/USA
+^[KNW][7][A-Z]{3}$ Arizona, Idaho, Montana, Nevada, Oregon, Utah, Washington and Wyoming 7 /General,Technician,TechnicianPlus/USA
+^[KNW][8][A-Z]{3}$ Michigan, Ohio and West Virginia	8 /General,Technician,TechnicianPlus/USA
+^[KNW][9][A-Z]{3}$ Illinois, Indiana and Wisconsin	9 /General,Technician,TechnicianPlus/USA
+^[KNW][0][A-Z]{3}$ CO IA KS MN MO NE ND SD	0 /General,Technician,TechnicianPlus/USA
+
+11	KL, NL, or WL	2
+^(NL|KL|WL)\d[A-Z]{2}$ Alaska 0-9 /General,Technician,TechnicianPlus/USA
+
+12	NP or WP	2
+^(NP|WP)[1][A-Z]{2}$ Navassa Island	1 Caribbean Insular areas/General,Technician,TechnicianPlus/USA
+^(NP|WP)[2][A-Z]{2}$ Virgin Islands	2 Caribbean Insular areas/General,Technician,TechnicianPlus/USA
+^(NP|WP)[34][A-Z]{2}$ Commonwealth of Puerto Rico except Desecheo Island	3 or 4 Caribbean Insular areas/General,Technician,TechnicianPlus/USA
+^(NP|WP)[5][A-Z]{2}$ Desecheo Island	5 Caribbean Insular areas/General,Technician,TechnicianPlus/USA
+
+13	KH, NH, or WH	2
+^(KH|NH|WH)[1][A-Z]{2}$ Baker or Howland Island	1 Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[2][A-Z]{2}$ Guam	2 Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[3][A-Z]{2}$ Johnston Island	3 Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[4][A-Z]{2}$ Midway Island	4 Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[5][K]{2}$ Kingman Reef	5 followed by suffix letter K Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[5][A-Z]{2}$ Palmyra or Jarvis Island	5 Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[7][K]{2}$ Kure Island	7 followed by the letter K Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[67][A-Z]{2}$ Hawaii except Kure Island	6 or 7 Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[8][A-Z]{2}$ American Samoa	8 Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[9][A-Z]{2}$ Wake, Wilkes, or Peale Island	9 Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+^(KH|NH|WH)[0][A-Z]{2}$ Commonwealth of Northern Mariana Islands	0 Hawaii and Pacific Insular areas/General,Technician,TechnicianPlus/USA
+
+
+Group D - Novice, Club, and Military Recreations Station
+Primary stations licensed to Novice class operators, and for club and military recreation stations.
+Region	Prefix	Letters in Suffix
+1-10	Two letter prefix with first letter K or W	3
+^[KW][A-Z][1][A-Z]{3}$ CT, Maine, MA, New Hampshire, Rhode Island and Vermont 1 /Novice,Club,MilitaryRec/USA
+^[KW][A-Z][2][A-Z]{3}$ New Jersey and New York 2 /Novice,Club,MilitaryRec/USA
+^[KW][A-Z][3][A-Z]{3}$ Delaware, DC, Maryland and Pennsylvania 3 /Novice,Club,MilitaryRec/USA
+^[KW][A-Z][4][A-Z]{3}$ AL FL GA KY NC SC TN VA 4 /Novice,Club,MilitaryRec/USA
+^[KW][A-Z][5][A-Z]{3}$ Arkansas, Louisiana, Mississippi, New Mexico, Oklahoma and Texas	5 /Novice,Club,MilitaryRec/USA
+^[KW][A-Z][6][A-Z]{3}$ California 6 /Novice,Club,MilitaryRec/USA
+^[KW][A-Z][7][A-Z]{3}$ Arizona, Idaho, Montana, Nevada, Oregon, Utah, Washington and Wyoming 7 /Novice,Club,MilitaryRec/USA
+^[KW][A-Z][8][A-Z]{3}$ Michigan, Ohio and West Virginia	8 /Novice,Club,MilitaryRec/USA
+^[KW][A-Z][9][A-Z]{3}$ Illinois, Indiana and Wisconsin	9 /Novice,Club,MilitaryRec/USA
+^[KW][A-Z][0][A-Z]{3}$ CO IA KS MN MO NE ND SD	0 /Novice,Club,MilitaryRec/USA
+
+11	KL or WL	3
+^(KL|WL)\d[A-Z]{3}$ Alaska 0-9 /Novice,Club,MilitaryRec/USA
+
+12	KP or WP	3
+^(KP|WP)[1][A-Z]{3}$ Navassa Island	1 Caribbean Insular areas/Novice,Club,MilitaryRec/USA
+^(KP|WP)[2][A-Z]{3}$ Virgin Islands	2 Caribbean Insular areas/Novice,Club,MilitaryRec/USA
+^(KP|WP)[34][A-Z]{3}$ Commonwealth of Puerto Rico except Desecheo Island	3 or 4 Caribbean Insular areas/Novice,Club,MilitaryRec/USA
+^(KP|WP)[5][A-Z]{3}$ Desecheo Island	5 Caribbean Insular areas/Novice,Club,MilitaryRec/USA
+
+13	KH or WH	3
+^(KH|WH)[1][A-Z]{3}$ Baker or Howland Island	1 Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[2][A-Z]{3}$ Guam	2 Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[3][A-Z]{3}$ Johnston Island	3 Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[4][A-Z]{3}$ Midway Island	4 Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[5][K]{3}$ Kingman Reef	5 followed by suffix letter K Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[5][A-Z]{3}$ Palmyra or Jarvis Island	5 Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[7][K]{3}$ Kure Island	7 followed by the letter K Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[67][A-Z]{3}$ Hawaii except Kure Island	6 or 7 Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[8][A-Z]{3}$ American Samoa	8 Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[9][A-Z]{3}$ Wake, Wilkes, or Peale Island	9 Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+^(KH|WH)[0][A-Z]{3}$ Commonwealth of Northern Mariana Islands	0 Hawaii and Pacific Insular areas/Novice,Club,MilitaryRec/USA
+
+
+Geographic Region-based Numerals
+Region	States & Other Areas	Numeral
+1	CT, Maine, MA, New Hampshire, Rhode Island and Vermont	1
+2	New Jersey and New York	2
+3	Delaware, DC, Maryland and Pennsylvania	3
+4	AL FL GA KY NC SC TN VA	4
+5	Arkansas, Louisiana, Mississippi, New Mexico, Oklahoma and Texas	5
+6	California	6
+7	Arizona, Idaho, Montana, Nevada, Oregon, Utah, Washington and Wyoming	7
+8	Michigan, Ohio and West Virginia	8
+9	Illinois, Indiana and Wisconsin	9
+10	CO IA KS MN MO NE ND SD	0
+
+11	Alaska	0-9
+12	Caribbean Insular areas:
+    Navassa Island	1
+    Virgin Islands	2
+    Commonwealth of Puerto Rico except Desecheo Island	3 or 4
+    Desecheo Island	5
+
+13	Hawaii and Pacific Insular areas:
+    Baker or Howland Island	1
+    Guam	2
+    Johnston Island	3
+    Midway Island	4
+    Palmyra or Jarvis Island	5
+    Kingman Reef	5 followed by suffix letter K
+    Hawaii except Kure Island	6 or 7
+    Kure Island	7 followed by the letter K
+    American Samoa	8
+    Wake, Wilkes, or Peale Island	9
+    Commonwealth of Northern Mariana Islands	0

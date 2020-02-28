@@ -12,46 +12,48 @@ namespace shvAlert
         /* public class HeartbeatModel
         {
             //public HeartbeatModel() { }
-            public string heartbeat_client_id { get; set; }
-            public UInt32 heartbeat_maximum_schema_number { get; set; }
-            public string heartbeat_version { get; set; }
-            public string heartbeat_revision { get; set; }
+            public string heartbeat_client_id               { get; set; }
+            public UInt32 heartbeat_maximum_schema_number   { get; set; }
+            public string heartbeat_version                 { get; set; }
+            public string heartbeat_revision                { get; set; }
         }*/
 
         public class StatusModel
         {
-            public string status_client_id { get; set; } //Text
+            public string status_client_id      { get; set; } //Text
             public string status_dial_frequency { get; set; } //Word64
-            public string status_mode { get; set; } //Text
-            public string status_dx_call { get; set; } //Text
-            public string status_report { get; set; } //Text
-            public string status_tx_mode { get; set; } //Text
-            public string status_tx_enabled { get; set; } //Bool
-            public string status_transmitting { get; set; } //Bool
-            public string status_decoding { get; set; } //Bool
-            public string status_rx_df { get; set; } //Word32
-            public string status_tx_df { get; set; } //Word32
-            public string status_de_call { get; set; } //Text
-            public string status_de_grid { get; set; } //Text
-            public string status_dx_grid { get; set; } //Text
-            public string status_tx_watchdog { get; set; } //Bool
-            public string status_submode { get; set; } //Text
-            public string status_fast_mode { get; set; } //Bool
+            public string status_mode           { get; set; } //Text
+            public string status_dx_call        { get; set; } //Text
+            public string status_report         { get; set; } //Text
+            public string status_tx_mode        { get; set; } //Text
+            public string status_tx_enabled     { get; set; } //Bool
+            public string status_transmitting   { get; set; } //Bool
+            public string status_decoding       { get; set; } //Bool
+            public string status_rx_df          { get; set; } //Word32
+            public string status_tx_df          { get; set; } //Word32
+            public string status_de_call        { get; set; } //Text
+            public string status_de_grid        { get; set; } //Text
+            public string status_dx_grid        { get; set; } //Text
+            public string status_tx_watchdog    { get; set; } //Bool
+            public string status_submode        { get; set; } //Text
+            public string status_fast_mode      { get; set; } //Bool
         }
 
         public class DecodeModel
         {
-            public string decode_client_id { get; set; }   // Text
-            public bool decode_new { get; set; }   // Bool
-            public DateTime decode_time { get; set; }   // DiffTime
-            public Int32 decode_snr { get; set; }   // Int
-            public Double decode_delta_time { get; set; }   // Double
-            public UInt32 decode_delta_frequency { get; set; }   // Word32
-            public string decode_mode { get; set; }   // Text
-            public string decode_message { get; set; }  // Text
+            public string   decode_client_id        { get; set; }   // Text
+            public bool     decode_new              { get; set; }   // Bool
+            public DateTime decode_time             { get; set; }   // DiffTime
+            public Int32    decode_snr              { get; set; }   // Int
+            public Double   decode_delta_time       { get; set; }   // Double
+            public UInt32   decode_delta_frequency  { get; set; }   // Word32
+            public string   decode_mode             { get; set; }   // Text
+            public string   decode_message          { get; set; }   // Text
             //
-            public string alloc_left { get; set; }  //CALLSIGN or CQ
-            public string alloc_right { get; set; } //CALLSIGN
+            public string   distance_from_here        { get; set; }   //Distance from My Grid
+            public string   distance_between_them     { get; set; }   //Distance between Them
+            public string   alloc_left                { get; set; }   //CALLSIGN or CQ
+            public string   alloc_right               { get; set; }   //CALLSIGN            
         }
     }
 }

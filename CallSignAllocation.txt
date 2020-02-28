@@ -1,12 +1,12 @@
 Call Sign Series	Allocated to
-AAA-ALZ	USA
+AAA-ALZ	USA REGEXP
 AMA-AOZ	Spain
 APA-ASZ	Pakistan 
 ATA-AWZ	India 
 AXA-AXZ	Australia
 AYA-AZZ	Argentine 
 A2A-A2Z	Botswana 
-A3A-A3Z	Tonga 
+A3A-A3Z	Tonga   
 A4A-A4Z	Oman 
 A5A-A5Z	Bhutan 
 A6A-A6Z	UAE
@@ -58,7 +58,9 @@ E5A-E5Z	New Zealand - Cook Islands
 E6A-E6Z	New Zealand - Niue
 E7A-E7Z	Bosnia and Herzegovina         
 FAA-FZZ	France
+F0A-F9Z	France
 GAA-GZZ	UK of GB and Northern Ireland
+G0A-G9Z	UK of GB and Northern Ireland
 HAA-HAZ	Hungary 
 HBA-HBZ	Switzerland 
 HCA-HDZ	Ecuador
@@ -97,7 +99,8 @@ J5A-J5Z	Guinea-Bissau
 J6A-J6Z	Saint Lucia
 J7A-J7Z	Dominica 
 J8A-J8Z	Saint Vincent and the Grenadines
-KAA-KZZ	USA
+KAA-KZZ	USA REGEXP
+K0A-K9Z	USA REGEXP
 LAA-LNZ	Norway
 LOA-LWZ	Argentine 
 LXA-LXZ	Luxembourg
@@ -105,7 +108,9 @@ LYA-LYZ	Lithuania
 LZA-LZZ	Bulgaria 
 L2A-L9Z	Argentine 
 MAA-MZZ	UK of GB and Northern Ireland
-NAA-NZZ	USA
+M0A-M9Z	UK of GB and Northern Ireland
+NAA-NZZ	USA REGEXP
+N0A-N9Z	USA REGEXP
 OAA-OCZ	Peru
 ODA-ODZ	Lebanon
 OEA-OEZ	Austria
@@ -184,7 +189,8 @@ V5A-V5Z	Namibia
 V6A-V6Z	Micronesia 
 V7A-V7Z	Marshall Islands 
 V8A-V8Z	Brunei Darussalam
-WAA-WZZ	USA
+WAA-WZZ	USA REGEXP
+W0A-W9Z	USA REGEXP
 XAA-XIZ	Mexico
 XJA-XOZ	Canada
 XPA-XPZ	Denmark
