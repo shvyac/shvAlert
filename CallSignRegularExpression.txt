@@ -173,19 +173,19 @@ UI9ZZZ
 ^[V][R][0-9][A-Z]{1,3}$ Taiwan (0A~9ZZZ) /China
 ^[X][X][9][A-Z]{1,3}$ Macau (9A~9ZZZ) /China
 
-^[J78][A-S][8][A-Z]{3}$ Hokkaido 北海道 JA8–JS8, 7J8, 8J8–8N8 /Japan
-^[J78][A-S][7][A-Z]{3}$ Tohoku 東北 JA7–JS7, 7J7, 8J7–8N7 /Japan
-^[J78][A-S][0][A-Z]{3}$ Shinetsu 信越 JA0–JS0, 7J0, 8J0–8N0 /Japan
-^[J][D][1][A-Z]{3}$ Ogasawara 小笠原 JD1 /Japan
-^[J78][A-S][1][A-Z]{3}$ Kanto 関東 JA1–JS1, 7J1, 8J1–8N1, 7K1–7N4 /Japan
-^[7][K-N][1-4][A-Z]{3}$ Kanto 関東 JA1–JS1, 7J1, 8J1–8N1, 7K1–7N4 /Japan
-^[J78][A-S][2][A-Z]{3}$ Tokai 東海 JA2–JS2, 7J2, 8J2–8N2 /Japan
-^[J78][A-S][3][A-Z]{3}$ Kinki 近畿 JA3–JS3, 7J3, 8J3–8N3 /Japan
-^[J78][A-S][9][A-Z]{3}$ Hokuriku 北陸 JA9–JS9, 7J9, 8J9–8N9 /Japan
-^[J78][A-S][4][A-Z]{3}$ Chugoku 中国 JA4–JS4, 7J4, 8J4–8N4 /Japan
-^[J78][A-S][5][A-Z]{3}$ Shikoku 四国 JA5–JS5, 7J5, 8J5–8N5 /Japan
-^[J][R-S][6][A-Z]{3}$ Okinawa 沖縄 JR6, JS6 /Japan
-^[J78][A-S][6][A-Z]{3}$ Kyushu 九州 JA6–JS6, 7J6, 8J6–8N6 /Japan
+^[J78][A-S][8][A-Z]{2,3}$ Hokkaido 北海道 JA8–JS8, 7J8, 8J8–8N8 /Japan
+^[J78][A-S][7][A-Z]{2,3}$ Tohoku 東北 JA7–JS7, 7J7, 8J7–8N7 /Japan
+^[J78][A-S][0][A-Z]{2,3}$ Shinetsu 信越 JA0–JS0, 7J0, 8J0–8N0 /Japan
+^[J][D][1][A-Z]{2,3}$ Ogasawara 小笠原 JD1 /Japan
+^[J78][A-S][1][A-Z]{2,3}$ Kanto 関東 JA1–JS1, 7J1, 8J1–8N1, 7K1–7N4 /Japan
+^[7][K-N][1-4][A-Z]{2,3}$ Kanto 関東 JA1–JS1, 7J1, 8J1–8N1, 7K1–7N4 /Japan
+^[J78][A-S][2][A-Z]{2,3}$ Tokai 東海 JA2–JS2, 7J2, 8J2–8N2 /Japan
+^[J78][A-S][3][A-Z]{2,3}$ Kinki 近畿 JA3–JS3, 7J3, 8J3–8N3 /Japan
+^[J78][A-S][9][A-Z]{2,3}$ Hokuriku 北陸 JA9–JS9, 7J9, 8J9–8N9 /Japan
+^[J78][A-S][4][A-Z]{2,3}$ Chugoku 中国 JA4–JS4, 7J4, 8J4–8N4 /Japan
+^[J78][A-S][5][A-Z]{2,3}$ Shikoku 四国 JA5–JS5, 7J5, 8J5–8N5 /Japan
+^[J][R-S][6][A-Z]{2,3}$ Okinawa 沖縄 JR6, JS6 /Japan
+^[J78][A-S][6][A-Z]{2,3}$ Kyushu 九州 JA6–JS6, 7J6, 8J6–8N6 /Japan
 
 ^(DS|DT|D7|D8|D9|HL|6K|6L|6M|6N)[0][A-Z]{3}$ 0: Science, University Stations /South Korea
 ^(DS|DT|D7|D8|D9|HL|6K|6L|6M|6N)[1][A-Z]{3}$ 1: Seoul Metropolitan Cities /South Korea

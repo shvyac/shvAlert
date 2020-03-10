@@ -40,7 +40,7 @@ namespace shvAlert
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
 
             Read_Call_Series();
             Read_Def_REGEXP();
@@ -65,7 +65,7 @@ namespace shvAlert
 
             DataGridAlertResult.ItemsSource = itemsDecodeModel;
             //ListViewAlertDebug.ItemsSource = itemsHeartbeatModel;
-                        
+
             SetupTimer();
             //Debug.WriteLine("ButtonAlertConnect2Mshv_Click SetupTimer");
             ListViewAlertDebug.Items.Add("ButtonAlertConnect2Mshv_Click SetupTimer");
@@ -257,7 +257,7 @@ namespace shvAlert
             ListViewAlertDebug.Dispatcher.Invoke(() =>
                         {
                             ListViewAlertDebug.Items.Add(strMSG);
-                            ListViewAlertDebug.Items.Refresh();                            
+                            ListViewAlertDebug.Items.Refresh();
 
                             if (ListViewAlertDebug.Items.Count > 0)
                             {
@@ -275,7 +275,7 @@ namespace shvAlert
         {
             labelName.Dispatcher.Invoke(() =>
             {
-                labelName.Content =strMSG;
+                labelName.Content = strMSG;
             });
         }
 
@@ -333,7 +333,11 @@ namespace shvAlert
                     string id0 = nmu.Unpackstring(rcvBytes, "id");              //Id (unique key) utf8
                     uint maxsch = nmu.Unpack4uint(rcvBytes, "maxscheme");       //Maximum schema number quint32
                     string version = nmu.Unpackstring(rcvBytes, "version");     //version utf8
-                    string revision = nmu.Unpackstring(rcvBytes, "revision");   //revision utf8
+                    string revision = "-";
+                    if (id0 != @"JTDX")
+                    {
+                        revision = nmu.Unpackstring(rcvBytes, "revision");   //revision utf8
+                    }
 
                     string hm = string.Format("id {0}, maxscheme {1}, version {2}, revision{3}", id0, maxsch, version, revision);
 
@@ -375,9 +379,9 @@ namespace shvAlert
                             "TxEnbledBool {6}, TransmittingBool {7}, DecodingBool {8}, RxDF {9}, TxDF {10}," +
                             " {11}, {12}, {13}, TxWatchingBool {14}, SubMode {15}," +
                             "FastModeBool {16}, SpecialOpMode {17}",
-                            id1, DialFrequency, Mode, DXcall, Report, TxMode, 
-                            TxEnbledBool, TransmittingBool, DecodingBool, RxDF, TxDF, 
-                            DEcall, DEgrid, DXgrid, TxWatchingBool, SubMode, 
+                            id1, DialFrequency, Mode, DXcall, Report, TxMode,
+                            TxEnbledBool, TransmittingBool, DecodingBool, RxDF, TxDF,
+                            DEcall, DEgrid, DXgrid, TxWatchingBool, SubMode,
                             FastModeBool, SpecialOpMode
                             );
 
@@ -385,7 +389,7 @@ namespace shvAlert
 
                         DispatcherMSG(sm);
 
-                        DispatcherLABEL(LabelDialFrequency, (DialFrequency/1000).ToString("#,0"));
+                        DispatcherLABEL(LabelDialFrequency, (DialFrequency / 1000).ToString("#,0"));
                         DispatcherLABEL(LabelDXcall, DXcall);
                         DispatcherLABEL(LabelDEcall, DEcall);
                         DispatcherLABEL(LabelDXgrid, DXgrid);
@@ -394,7 +398,7 @@ namespace shvAlert
                         DispatcherLABEL(LabelTxMode, TxMode);
                         DispatcherLABEL(LabelReport, Report);
                     }
-                    else if (id1.Contains("WSJT"))
+                    else if (id1.Contains("WSJT") || id1.Contains("JTDX"))
                     {
                         UInt64 DialFrequency = nmu.Unpack8uint(rcvBytes, "DialFrequency");      //Dial Frequency (Hz) quint64
                         string Mode = nmu.Unpackstring(rcvBytes, "Mode");                       //Mode utf8
@@ -412,39 +416,68 @@ namespace shvAlert
                         bool TxWatchingBool = nmu.Unpackbool(rcvBytes, "TxWatchingBool");       //Tx Watchdog bool
                         string SubMode = nmu.Unpackstring(rcvBytes, "SubMode");                 //Sub-mode utf8
                         bool FastModeBool = nmu.Unpackbool(rcvBytes, "FastModeBool");           //Fast mode bool
-                        int SpecialOpMode = nmu.Unpack1int(rcvBytes, "SpecialOpMode");          //Special operation mode quint8
+                        string sm = "";
 
-                        int FrequencyTolerance = nmu.Unpack4int(rcvBytes, "FrequencyTolerance");          //Frequency Tolerance quint32
-                        int TRPeriod = nmu.Unpack4int(rcvBytes, "TRPeriod");                                  //T / R Period quint32
-                        string ConfigurationName = nmu.Unpackstring(rcvBytes, "ConfigurationName");          //Configuration Name utf8
+                        if (id1.Contains("WSJT"))
+                        {
+                            int SpecialOpMode = nmu.Unpack1int(rcvBytes, "SpecialOpMode");          //Special operation mode quint8
 
-                        string sm = string.Format(
-                            "{0}, DialFrequency {1}, Mode {2}, DXcall {3}, Report {4}, TxMode {5}," +
-                            "TxEnbledBool {6}, TransmittingBool {7}, DecodingBool {8}, RxDF {9}, TxDF {10}," +
-                            "DEcall {11}, DEgrid {12}, DXgrid {13}, TxWatchingBool {14}, SubMode {15}," +
-                            "FastModeBool {16}, SpecialOpMode {17}, FrequencyTolerance {18}, TRPeriod {19}, ConfigurationName {20} ",
-                            id1, DialFrequency, Mode, DXcall, Report, TxMode, TxEnbledBool, TransmittingBool, DecodingBool, RxDF, TxDF,
-                            DEcall, DEgrid, DXgrid, TxWatchingBool, SubMode, FastModeBool, SpecialOpMode, FrequencyTolerance, TRPeriod, ConfigurationName
-                            );
+                            int FrequencyTolerance = nmu.Unpack4int(rcvBytes, "FrequencyTolerance");          //Frequency Tolerance quint32
+                            int TRPeriod = nmu.Unpack4int(rcvBytes, "TRPeriod");                                  //T / R Period quint32
+                            string ConfigurationName = nmu.Unpackstring(rcvBytes, "ConfigurationName");          //Configuration Name utf8
+
+                            sm = string.Format(
+                                "{0}, DialFrequency {1}, Mode {2}, DXcall {3}, Report {4}, TxMode {5}," +
+                                "TxEnbledBool {6}, TransmittingBool {7}, DecodingBool {8}, RxDF {9}, TxDF {10}," +
+                                "DEcall {11}, DEgrid {12}, DXgrid {13}, TxWatchingBool {14}, SubMode {15}," +
+                                "FastModeBool {16}, SpecialOpMode {17}, FrequencyTolerance {18}, TRPeriod {19}, ConfigurationName {20} ",
+                                id1, DialFrequency, Mode, DXcall, Report, TxMode, TxEnbledBool, TransmittingBool, DecodingBool, RxDF, TxDF,
+                                DEcall, DEgrid, DXgrid, TxWatchingBool, SubMode, FastModeBool, SpecialOpMode, FrequencyTolerance, TRPeriod, ConfigurationName
+                                );
+                        }
+                        else
+                        {
+                            bool TxFirstBool = nmu.Unpackbool(rcvBytes, "TxFirstBool");           //TX first bool
+
+                            sm = string.Format(
+                                "{0}, DialFrequency {1}, Mode {2}, DXcall {3}, Report {4}, TxMode {5}," +
+                                "TxEnbledBool {6}, TransmittingBool {7}, DecodingBool {8}, RxDF {9}, TxDF {10}," +
+                                "DEcall {11}, DEgrid {12}, DXgrid {13}, TxWatchingBool {14}, SubMode {15}," +
+                                "FastModeBool {16}, TxFirstBool {17}",
+                                id1, DialFrequency, Mode, DXcall, Report, TxMode, TxEnbledBool, TransmittingBool, DecodingBool, RxDF, TxDF,
+                                DEcall, DEgrid, DXgrid, TxWatchingBool, SubMode, FastModeBool, TxFirstBool
+                                );
+                        }
+
+                        gMyGridLoc = DEgrid;
 
                         DispatcherMSG(sm);
+
+                        DispatcherLABEL(LabelDialFrequency, (DialFrequency / 1000).ToString("#,0"));
+                        DispatcherLABEL(LabelDXcall, DXcall);
+                        DispatcherLABEL(LabelDEcall, DEcall);
+                        DispatcherLABEL(LabelDXgrid, DXgrid);
+                        DispatcherLABEL(LabelDEgrid, DEgrid);
+                        DispatcherLABEL(LabelMode, Mode);
+                        DispatcherLABEL(LabelTxMode, TxMode);
+                        DispatcherLABEL(LabelReport, Report);
                     }
                     else
                     {
-                        DispatcherMSG(string.Format("*** Illegal id1 {0} Found. It is not MSHV and WSJT.", id1));
+                        DispatcherMSG(string.Format("*** Illegal id1 {0} Found. It is not MSHV,WSJT-X,JTDX.", id1));
                     }
 
                     break;
 
                 case 2: //----------------------------------------------------------------------Decode
-                    string id2      = nmu.Unpackstring(rcvBytes, "id");
-                    bool boNew      = nmu.Unpackbool(rcvBytes, "isNew");
+                    string id2 = nmu.Unpackstring(rcvBytes, "id");
+                    bool boNew = nmu.Unpackbool(rcvBytes, "isNew");
                     DateTime datetm = nmu.UnpackDateTime(rcvBytes, "tm");
-                    int SNR         = nmu.Unpack4int(rcvBytes, "snr");
-                    float DT        = nmu.Unpack8float(rcvBytes, "dt");
-                    uint DF         = nmu.Unpack4uint(rcvBytes, "df");
-                    string MODE     = nmu.Unpackstring(rcvBytes, "mode");
-                    string Message  = nmu.Unpackstring(rcvBytes, "message");
+                    int SNR = nmu.Unpack4int(rcvBytes, "snr");
+                    float DT = nmu.Unpack8float(rcvBytes, "dt");
+                    uint DF = nmu.Unpack4uint(rcvBytes, "df");
+                    string MODE = nmu.Unpackstring(rcvBytes, "mode");
+                    string Message = nmu.Unpackstring(rcvBytes, "message");
 
                     string[] strCountry = GetCountry(Message);  // Get Call Sign Allocation Info. strCountry[2]=Distance Km
 
@@ -452,18 +485,18 @@ namespace shvAlert
                     {
                         //heartbeat_client_id = iMagic,
                         //heartbeat_maximum_schema_number = iSchema,
-                        decode_client_id        = id2,
-                        decode_new              = boNew,
-                        decode_time             = datetm,
-                        decode_snr              = SNR,
-                        decode_delta_time       = Math.Round(DT, 1),
-                        decode_delta_frequency  = DF,
-                        decode_mode             = MODE,
-                        decode_message          = Message,
-                        alloc_left              = strCountry[0], // Left Call
-                        alloc_right             = strCountry[1], // Right Call
-                        distance_from_here      = strCountry[2],
-                        distance_between_them   = @""
+                        decode_client_id = id2,
+                        decode_new = boNew,
+                        decode_time = datetm,
+                        decode_snr = SNR,
+                        decode_delta_time = Math.Round(DT, 1),
+                        decode_delta_frequency = DF,
+                        decode_mode = MODE,
+                        decode_message = Message,
+                        alloc_left = strCountry[0], // Left Call
+                        alloc_right = strCountry[1], // Right Call
+                        distance_from_here = strCountry[2],
+                        distance_between_them = @""
                     };
 
                     DataGridAlertResult.Dispatcher.Invoke(() =>
@@ -498,7 +531,7 @@ namespace shvAlert
             //Debug.WriteLine("BeginReceive Again");
         }
 
-        
+
         private void DataGridAlertResult_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             Style h_Right = new Style();
@@ -568,43 +601,56 @@ namespace shvAlert
             // JA1AAA JA9SSS RRR
 
             //-----------------------------------------------------
-            //string[] retCountry = new string[2];  // LeftCall RightCall
-
             string[] retCountry = new string[3];  // LeftCall RightCall RightCallDistance Km
-            
-            string[] fields = decodedMSG.Split(' ');
-            int fieldsLength = fields.Length;
-            if (fieldsLength < 2  || 4 < fieldsLength)
+
+            MatchCollection results = Regex.Matches(decodedMSG, "[^ ]+");
+            foreach (Match m in results)
             {
-                
+                Debug.WriteLine(m.Value);
             }
+            string[] fields = new string[3];
+            int fieldsLength = results.Count();
             switch (fieldsLength)
             {
                 case 2://  JA1AAA JA9SSS
                     DispatcherMSG(decodedMSG + " --- Length 2");
 
-                    Array.Resize(ref fields, fields.Length + 1);
-                    fields[fields.Length - 1] = @"NULL";
+                    //Array.Resize(ref fields, fields.Length + 1);
+                    //fields[fields.Length - 1] = @"NULL";
                     retCountry[2] = @"Null GL";
+                    fields[0] = results[0].Value;
+                    fields[1] = results[1].Value;
+                    fields[2] = @"NULL";
                     break;
 
                 case 3://  JA1AAA JA9SSS PM96
-                    Debug.WriteLine("===> " + fields[2]); // PM96 73 RR73 RRR
+                    Debug.WriteLine("===> " + results[2].Value); // PM96, 73, RR73, RRR
+                    fields[0] = results[0].Value;
+                    fields[1] = results[1].Value;
+                    fields[2] = results[2].Value;
                     break;
 
                 case 4:
                     // CQ EU JA1AAA PM96
+                    // <ZW86LABRE> WF3W R FN20  ---need bug fix
+                    //
                     DispatcherMSG(decodedMSG + " --- Length 4");
+                    fields[0] = results[0].Value;
+                    fields[1] = results[2].Value;
+                    fields[2] = results[3].Value;
 
-                    var list = new List<string>();
-                    list.AddRange(fields);
-                    list.RemoveAt(1);
-                    fields = list.ToArray();                    
+                    //var list = new List<string>();
+                    //list.AddRange(fields);
+                    //list.RemoveAt(1);// del EU
+                    //fields = list.ToArray();
                     break;
 
                 default:
-                    DispatcherMSG(decodedMSG + " --- Length " + fieldsLength);
-                    break;
+                    DispatcherMSG(decodedMSG + " --- Illegal Length = " + fieldsLength);
+                    retCountry[0] = @"ILLEGAL";
+                    retCountry[1] = @"FIELDS";
+                    retCountry[2] = @"LENGTH";
+                    return retCountry;
             }
 
             for (int i = 0; i < 2; i++)
@@ -626,8 +672,8 @@ namespace shvAlert
                         Debug.WriteLine(retCountry[i] + " exists in callsignseries, " + decodedMSG);
 
                         if (retCountry[i].Contains("REGEXP"))
-                        {                          
-                            string Province = GetCountryREGEXP(fields[i]);
+                        {
+                            string Province = GetCountryREGEXP(calli);
                             retCountry[i] = Province;
                             Debug.WriteLine("REGEXP: " + Province + " " + fields[i]);
                         }
@@ -668,7 +714,7 @@ namespace shvAlert
 
             if (callSign.Contains(@"<")) callSign = callSign.Replace(@"<", @"");
             if (callSign.Contains(@">")) callSign = callSign.Replace(@">", @"");
-            if (callSign.Contains(@"/")) callSign = callSign.Substring(0, callSign.LastIndexOf(@"/")-1);
+            if (callSign.Contains(@"/")) callSign = callSign.Substring(0, callSign.LastIndexOf(@"/"));
             if (orgLength != callSign.Length)
             {
                 DispatcherMSG(@"CheckIllegalCall Modified: " + orgCall + " to " + callSign);
@@ -686,7 +732,8 @@ namespace shvAlert
                     return item.strCountry;
                 }
             }
-            return "Province NOT found in " + callSign;
+            DispatcherMSG(@"GetCountryREGEXP: Province NOT found " + callSign);
+            return "Province NOT found " + callSign;
         }
 
         public int GetDistanceBetween(string DxGrid, string DeGrid)
@@ -698,11 +745,11 @@ namespace shvAlert
             char[] cdx = DxGrid.ToCharArray();
             char[] cde = DeGrid.ToCharArray();
 
-            double lonDX = ((int)cdx[0] - 65) * 20.0 + Convert.ToInt32(cdx[2].ToString()) * 2.0 +1.0   - 180.0;
-            double latDX  = ((int)cdx[1] - 65) * 10.0 + Convert.ToInt32(cdx[3].ToString())  + 0.5 - 90.0;
+            double lonDX = ((int)cdx[0] - 65) * 20.0 + Convert.ToInt32(cdx[2].ToString()) * 2.0 + 1.0 - 180.0;
+            double latDX = ((int)cdx[1] - 65) * 10.0 + Convert.ToInt32(cdx[3].ToString()) + 0.5 - 90.0;
 
-            double lonDE = ((int)cde[0] - 65) * 20.0 + Convert.ToInt32(cde[2].ToString()) * 2.0 +1.0  - 180.0;
-            double latDE = ((int)cde[1] - 65) * 10.0 + Convert.ToInt32(cde[3].ToString()) + 0.5  - 90.0;
+            double lonDE = ((int)cde[0] - 65) * 20.0 + Convert.ToInt32(cde[2].ToString()) * 2.0 + 1.0 - 180.0;
+            double latDE = ((int)cde[1] - 65) * 10.0 + Convert.ToInt32(cde[3].ToString()) + 0.5 - 90.0;
 
             //int longitude =(CODE(MID(A1,1,1))-65)*20 + VALUE(MID(A1,3,1))*2 + (CODE(MID(A1,5,1))-97)/12 + 1/24 - 180
             //int latitude  =(CODE(MID(A1, 2, 1)) - 65) * 10 + VALUE(MID(A1, 4, 1)) + (CODE(MID(A1, 6, 1)) - 97) / 24 + 1 / 48 - 90;
@@ -742,7 +789,7 @@ namespace shvAlert
                     Math.Sin(deltaLambda / 2) * Math.Sin(deltaLambda / 2);
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
-            double d = R * c / 1000.0 ; //Km
+            double d = R * c / 1000.0; //Km
 
             /*
             var R = 6371e3; // metres

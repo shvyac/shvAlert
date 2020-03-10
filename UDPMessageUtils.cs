@@ -12,7 +12,7 @@ namespace shvAlert
     class UDPMessageUtils
     {
         public int gIndex;
-        public bool flgDebug = false;
+        public bool flgDebug = true;
         //------------------------------------------------------------------------------------------
 
         public int Unpack1int(byte[] bData, string VarName)
@@ -33,8 +33,9 @@ namespace shvAlert
                 Array.Reverse(b);
             }
             uint retValue = BitConverter.ToUInt32(b, 0);
+            
+            if (flgDebug) Debug.WriteLine("Unpack4uint VarName={0} gIndex={1} Len {2} retValue={3} ={4}", VarName, gIndex, 4, retValue, BitConverter.ToString(b));
             gIndex = gIndex + 4;
-            if (flgDebug) Debug.WriteLine("Unpack4uint {0} {1} {2} {3}", VarName, gIndex, retValue, BitConverter.ToString(b));
             return retValue;
         }
 
@@ -111,8 +112,9 @@ namespace shvAlert
                     //Array.Reverse(b);
                 }
                 string retValue = Encoding.UTF8.GetString(b);
+                
+                if (flgDebug) Debug.WriteLine("Unpackstring VarName={0} gIndex={1} Len={2} retValue={3} ={4}", VarName, gIndex, retValue.Length, retValue, BitConverter.ToString(b));
                 gIndex = gIndex + retValue.Length;
-                if (flgDebug) Debug.WriteLine("Unpackstring {0} {1} {2} {3}", VarName, gIndex, retValue, BitConverter.ToString(b));
                 return retValue;
             }
             else
