@@ -1,4 +1,5 @@
-# shvAlert
+# shvAlert - Alert for MSHV WSJT-X and JTDX using UDP Connection
+
 Alert for MSHV WSJT-X and JTDX
 
 MSHV https://sourceforge.net/projects/mshv/
